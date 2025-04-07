@@ -931,7 +931,7 @@ resource "azurerm_linux_web_app_slot" "this" {
     }
   }
   dynamic "logs" {
-    for_each = each.value.logs
+    for_each = each.value.logs == null ? []: [each.value.logs]
 
     content {
       detailed_error_messages = logs.value.detailed_error_messages

@@ -444,7 +444,7 @@ resource "azurerm_windows_web_app" "this" {
     }
   }
   dynamic "logs" {
-    for_each = var.logs
+    for_each = var.logs == null ? [] : [var.logs]
 
     content {
       detailed_error_messages = logs.value.detailed_error_messages
